@@ -412,14 +412,14 @@ export default class PlayScene {
     let count = [];
     let arr = this.array;
     for (let j = y; j < cols; j++) {
-      if (arr[x][j] === num) {
+      if (arr[x][j] === num || arr[x][j] === 8) {
         count.push([x, j]);
       } else {
         j = cols
       }
     }
     for (let j = y - 1; j >= 0; j--) {
-      if (arr[x][j] === num) {
+      if (arr[x][j] === num || arr[x][j] === 8) {
         count.push([x, j]);
       } else {
         j = -1
@@ -436,14 +436,14 @@ export default class PlayScene {
     let count = [];
     let arr = this.array;
     for (let i = x; i < rows; i++) {
-      if (arr[i][y] === num) {
+      if (arr[i][y] === num || arr[i][y] === 8) {
         count.push([i, y]);
       } else {
         i = rows
       }
     }
     for (let i = x - 1; i >= 0; i--) {
-      if (arr[i][y] === num) {
+      if (arr[i][y] === num || arr[i][y] === 8) {
         count.push([i, y]);
       } else {
         i = -1
@@ -460,7 +460,7 @@ export default class PlayScene {
     let count = [];
     let arr = this.array;
     for (let i = x, j = y; i < rows && y < cols;) {
-      if (arr[i][j] === num) {
+      if (arr[i][j] === num || arr[i][j] === 8) {
         count.push([i, j]);
       } else {
         i = rows
@@ -469,7 +469,7 @@ export default class PlayScene {
       j++;
     }
     for (let i = x - 1, j = y - 1; i >= 0 && j >= 0;) {
-      if (arr[i][j] === num) {
+      if (arr[i][j] === num || arr[i][j] === 8) {
         count.push([i, j]);
       } else {
         i = -1
@@ -488,7 +488,7 @@ export default class PlayScene {
     let count = [];
     let arr = this.array;
     for (let i = x, j = y; i >= 0 && j < cols;) {
-      if (arr[i][j] === num) {
+      if (arr[i][j] === num || arr[i][j] === 8) {
         count.push([i, j]);
       } else {
         i = -1
@@ -497,7 +497,7 @@ export default class PlayScene {
       j++;
     }
     for (let i = x + 1, j = y - 1; i < rows && j >= 0;) {
-      if (arr[i][j] === num) {
+      if (arr[i][j] === num || arr[i][j] === 8) {
         count.push([i, j]);
       } else {
         i = rows
