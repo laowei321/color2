@@ -34,7 +34,7 @@ export default class GameInfo {
     ctx.fillStyle = "#ffffff"
     ctx.font = "14px Arial"
     ctx.fillText(
-      'Tips：点击小球选中，点击空格移动小球。',
+      'Tips：点击小球将其选中，点击空格移动小球。',
       15,
       screenWidth * 13 / 9 + 30
     )
@@ -42,6 +42,11 @@ export default class GameInfo {
       '相同颜色5连以上即可消除,多消加分更多。',
       45,
       screenWidth * 13 / 9 + 54
+    )
+    ctx.fillText(
+      '未消除时会随机置入上方的3个预备小球。',
+      45,
+      screenWidth * 13 / 9 + 78
     )
   }
   renderGameOver(ctx, score) {

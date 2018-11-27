@@ -14,12 +14,12 @@ export default class DataBus {
 
     this.pool = new Pool()
     this.wjj = 'ball01'
-    this.colorNum = 7
     this.myAppReward = 0
     this.reset()
   }
 
   reset() {
+    this.colorNum = 3
     this.vol = wx.getStorageSync('volSet') || "1"
     this.maxscore = wx.getStorageSync('maxScore') || 0
     this.frame      = 0

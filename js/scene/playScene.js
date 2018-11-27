@@ -16,7 +16,7 @@ const rows = 9,
   cols = 9;
 
 //初始小球数量
-const initBallNum = 10;
+const initBallNum = 30;
 const ballSpeed = 40;
 let databus = new DataBus();
 
@@ -357,6 +357,21 @@ export default class PlayScene {
   }
   //更新最高分
   reg_maxScore(){
+    if(this.databus.score > 680){
+      this.databus.colorNum = 8
+    }else if(this.databus.score > 400){
+      this.databus.colorNum = 7
+    }else if(this.databus.score > 300){
+      this.databus.colorNum = 6
+    }else if(this.databus.score > 200){
+      this.databus.colorNum = 5
+    }else if (this.databus.score > 100) {
+      this.databus.colorNum = 4
+    }else if(this.databus.score > 60){
+      this.databus.colorNum = 3
+    } else if (this.databus.score > 30) {
+      this.databus.colorNum = 3
+    }
     if (this.databus.score > this.databus.maxscore) {
       this.databus.maxscore = this.databus.score;
       wx.setStorageSync('maxScore', this.databus.maxscore);
@@ -375,7 +390,20 @@ export default class PlayScene {
     });
   }
   //检测消除
-  check_eliminate(num, x, y) {
+  check_eliminate(num,x,y){
+    if (num === 8) {
+      for (let q = 1; q < 8; q++) {
+        let test_ = this.check_eliminate2(q, x, y)
+        if (test_ !== null){
+          return test_
+        }
+      }
+    } else {
+      return this.check_eliminate2(num, x, y)
+    }
+  }
+
+  check_eliminate2(num, x, y) {
     let count1 = this.lrCount(num, x, y);
     let count2 = this.tbCount(num, x, y);
     let count3 = this.rtCount(num, x, y);
