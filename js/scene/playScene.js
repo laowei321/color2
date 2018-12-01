@@ -65,33 +65,20 @@ export default class PlayScene {
       else if (y >= that.padding && y <= that.padding + screenWidth) {
         let j = Math.floor(x / itemwidth);
         let i = Math.floor((y - that.padding) / itemwidth);
-        if (that.databus.focus === false && that.array[i][j] === 0) {
-          console.log('empty', i, j)
-        } else
-        if (that.databus.focus === false && that.array[i][j] !== 0) {
+        if(that.array[i][j] !== 0){
           that.music.playFocus();
           console.log('This pos', i, j);
-          that.databus.ani_pos = [i, j];
           that.databus.last_xy = [i, j];
           that.databus.focus = true;
           that.databus.focuscolor = that.array[i][j];
           that.databus.frame = 0;
-        } else
-        if (that.databus.focus === true && that.array[i][j] !== 0) {
-          if (i === that.databus.last_xy[0] && j === that.databus.last_xy[1]) {
-            that.music.playFocus();
-          } else {
-            that.music.playFocus();
-            console.log('This pos', i, j);
-            that.databus.ani_pos = [i, j];
-            that.databus.last_xy = [i, j];
-            that.databus.focuscolor = that.array[i][j];
-            that.databus.frame = 0;
-          }
-        } else {
+        }
+        else{
+          if (that.databus.focus === false) {console.log('empty', i, j)}
+          else{
           //检测路径
-          let per_i = that.databus.last_xy[0],
-            per_j = that.databus.last_xy[1];
+          let per_i = that.databus.last_xy[0];
+          let per_j = that.databus.last_xy[1];
           console.log(per_i, per_j, 'move to', i, j);
           let resultArr = that.finder([per_i, per_j], [i, j]);
           let rl = resultArr.length;
@@ -135,16 +122,15 @@ export default class PlayScene {
               if (check_eli != null) {
                 that.reg_eliminate(check_eli);
                 that.reg_score(check_eli);
-                that.databus.balls = [];
-                that.drawballs();
               } else {
                 that.put3ball();
                 that.next3ball();
-                that.databus.balls = [];
-                that.drawballs();
                 that.show3balls();
               }
+              that.databus.balls = [];
+              that.drawballs();
             }, rl * ballSpeed - ballSpeed)
+          }
           }
         }
       }
@@ -152,7 +138,6 @@ export default class PlayScene {
   }
   restart() {
     wx.triggerGC();
-    this.initEvent();
     this.array = PlayScene.multiArray(rows, cols);
     this.bg = new BackGround(this.ctx);
     this.gameinfo = new GameInfo();
@@ -165,6 +150,7 @@ export default class PlayScene {
     this.next3ball();
     this.drawballs();
     this.show3balls();
+    this.initEvent();
     // 清除上一局的动画
     cancelAnimationFrame(this.aniId);
     this.aniId = requestAnimationFrame(this.bindLoop);
@@ -342,11 +328,11 @@ export default class PlayScene {
     let count_num = count_plus.length;
     let score_plus = 2 * count_num * (count_num - 10) + 60;
     that.databus.score_plus += score_plus
+    console.log(that.databus.score_plus)
     for(let i=0;i<score_plus;i+=2){
       setTimeout(()=>{
         that.databus.score += 2
         that.databus.score_plus -= 2
-        console.log(that.databus.score_plus)
         if (i + 2 === score_plus) {
           that.reg_maxScore();
         }
@@ -357,20 +343,31 @@ export default class PlayScene {
   }
   //更新最高分
   reg_maxScore(){
-    if(this.databus.score > 680){
-      this.databus.colorNum = 8
-    }else if(this.databus.score > 400){
+    if(this.databus.score > 1680){
       this.databus.colorNum = 7
-    }else if(this.databus.score > 300){
+    }else if(this.databus.score > 1480){
+      this.databus.colorNum = 8
+    }else if (this.databus.score > 1280) {
+      this.databus.colorNum = 7
+    } else if (this.databus.score > 1080) {
+      this.databus.colorNum = 8
+    }else if (this.databus.score > 880) {
+      this.databus.colorNum = 7
+    } else if (this.databus.score > 680) {
+      this.databus.colorNum = 8
+    }else if(this.databus.score > 450){
+      this.databus.colorNum = 7
+      wx.showToast({
+        title: '彩色万能球即将开启！',
+        duration: 1500,
+        icon: "none"
+      });
+    }else if(this.databus.score > 280){
       this.databus.colorNum = 6
-    }else if(this.databus.score > 200){
+    }else if(this.databus.score > 160){
       this.databus.colorNum = 5
-    }else if (this.databus.score > 100) {
+    }else if (this.databus.score > 80) {
       this.databus.colorNum = 4
-    }else if(this.databus.score > 60){
-      this.databus.colorNum = 3
-    } else if (this.databus.score > 30) {
-      this.databus.colorNum = 3
     }
     if (this.databus.score > this.databus.maxscore) {
       this.databus.maxscore = this.databus.score;

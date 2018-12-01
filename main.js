@@ -38,7 +38,7 @@ export default class Main {
     });
     wx.onShareAppMessage(function () {
       // 用户点击了“转发”按钮
-      switch(Math.floor(Math.random()*4+1)){
+      switch(Math.floor(Math.random()*5+1)){
         case 1:
           return {
             title: '@你的小可爱向你丢了一个小彩球并捎来一句话',
@@ -48,8 +48,8 @@ export default class Main {
           break; 
         case 2:
           return {
-            title: '原来找对象真的这么简单，800分随机，1000分随便选！',
-            imageUrl: 'images/qinglv.jpg',
+            title: '挑战一下吗？',
+            imageUrl: 'images/share2.jpg',
             query: 'openId=1&sharepic=share2'
           }
           break;
@@ -62,11 +62,18 @@ export default class Main {
           break;
         case 4:
           return {
-            title: '@所有人 哈哈哈哈哈',
+            title: '@所有人 真香~',
             imageUrl: 'images/share4.jpg',
             query: 'openId=1&sharepic=share4'
           }
           break;
+        case 5:
+          return {
+            title: '原来找对象真的这么简单，800分随机，1000分随便选！',
+            imageUrl: 'images/qinglv.jpg',
+            query: 'openId=1&sharepic=share5'
+          }
+          break; 
       }
     })
   }

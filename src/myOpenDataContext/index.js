@@ -70,8 +70,10 @@ function drawTitle(num){
 
 function initRanklist(list) {
   // 至少绘制6个
+  if(list && list.length > 50){
+    list = list.slice(0,50)
+  }
   let length = Math.max(list.length, 6);
-  
   let itemHeight = 590 / 6;
 
   // itemCanvas.width = screenWidth - 40 * 2;
