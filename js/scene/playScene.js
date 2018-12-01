@@ -67,11 +67,15 @@ export default class PlayScene {
         let i = Math.floor((y - that.padding) / itemwidth);
         if(that.array[i][j] !== 0){
           that.music.playFocus();
-          console.log('This pos', i, j);
-          that.databus.last_xy = [i, j];
-          that.databus.focus = true;
-          that.databus.focuscolor = that.array[i][j];
-          that.databus.frame = 0;
+          if(i === that.databus.last_xy[0] && j === that.databus.last_xy[1]){
+            console.log("the same ball")
+          }else{
+            console.log('This pos', i, j);
+            that.databus.last_xy = [i, j];
+            that.databus.focus = true;
+            that.databus.focuscolor = that.array[i][j];
+            that.databus.frame = 0;
+          }
         }
         else{
           if (that.databus.focus === false) {console.log('empty', i, j)}

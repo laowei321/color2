@@ -42,7 +42,7 @@ export default class Ball extends Sprite {
   }
   // 每一帧更新小球高与位移
   update() {
-    if (this.j == databus.last_xy[1] && this.i == databus.last_xy[0]){
+    if (databus.focus === true && this.j == databus.last_xy[1] && this.i == databus.last_xy[0]){
       let spe = 0.03, aa = databus.frame % 20
       this.y += spe * kzarray[aa] * itemwidth
       this.height -= spe * kzarray[aa] * itemwidth
