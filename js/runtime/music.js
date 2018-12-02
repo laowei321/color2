@@ -21,7 +21,7 @@ export default class Music {
 
     this.focusAudio = wx.createInnerAudioContext()
     this.focusAudio.src = 'audio/focus.mp3'
-//引入8个钢琴声音
+    //引入8个钢琴声音
     this.focusAudio_1 = wx.createInnerAudioContext()
     this.focusAudio_1.src = 'audio/do.mp3'
 

@@ -9,7 +9,7 @@
 		"nodeModules": false
 	},
 	"compileType": "game",
-	"libVersion": "2.4.0",
+	"libVersion": "2.4.1",
 	"appid": "wx82a187d6fc4f987e",
 	"projectname": "color2",
 	"condition": {

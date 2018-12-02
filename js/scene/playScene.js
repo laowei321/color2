@@ -286,6 +286,8 @@ export default class PlayScene {
             that.reg_eliminate(check_eli);
             that.reg_score(check_eli);
           }
+        }else{
+          that.databus.topballs = []
         }
       }
     }
@@ -357,15 +359,18 @@ export default class PlayScene {
       this.databus.colorNum = 8
     }else if (this.databus.score > 880) {
       this.databus.colorNum = 7
-    } else if (this.databus.score > 680) {
+    } else if (this.databus.score > 580) {
       this.databus.colorNum = 8
     }else if(this.databus.score > 450){
       this.databus.colorNum = 7
+      if(this.databus.caisetips === 0){
       wx.showToast({
-        title: '彩色万能球即将开启！',
+        title: '彩色球即将开启！',
         duration: 1500,
         icon: "none"
-      });
+        });
+      this.databus.caisetips = 1
+      }
     }else if(this.databus.score > 280){
       this.databus.colorNum = 6
     }else if(this.databus.score > 160){

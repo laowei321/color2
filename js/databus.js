@@ -37,6 +37,7 @@ export default class DataBus {
     this.aniid = []
     this.aniId = 0 
     this.score_plus = 0
+    this.caisetips = 0
   }
 
   /**

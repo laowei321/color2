@@ -54,13 +54,6 @@ export default class HomeScene {
     if (DataStore.getInstance().shareTicket && !this.showGroup) {
       this.showGroup = true;
       this.messageSharecanvas(3, DataStore.getInstance().shareTicket);
-      // wx.showLoading({
-      //   title: '加载中，骚等下下',
-      // })
-
-      // setTimeout(function () {
-      //   wx.hideLoading()
-      // }, 1500)
       DataStore.getInstance().shareTicket = ""
     }
     if (this.ranking) {
