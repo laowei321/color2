@@ -6,12 +6,14 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"nodeModules": false
+		"nodeModules": true
 	},
 	"compileType": "game",
 	"libVersion": "2.4.1",
 	"appid": "wx82a187d6fc4f987e",
 	"projectname": "color2",
+  "miniprogramRoot": "miniprogram/",
+	"cloudfunctionRoot": "cloudfunction/",
 	"condition": {
 		"search": {
 			"current": -1,
