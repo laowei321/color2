@@ -13,7 +13,22 @@ export default class HomeScene {
     this.ctx = ctx;
     this.canvas = DataStore.getInstance().canvas;
     this.loop();
+    let bannerAd = wx.createBannerAd({
+      adUnitId: 'adunit-441ce29b734ad5c4',
+      style: {
+        left: 0,
+        top: screenHeight - 110,
+        width: screenWidth
+      }
+    })
     
+    bannerAd.onLoad(() => {
+      console.log('banner 广告加载成功')
+    })
+    bannerAd.show()
+    bannerAd.onError(err => {
+      console.log(err)
+    })
   }
   
   drawHomeEle() {
@@ -46,7 +61,7 @@ export default class HomeScene {
   }
   loop() {
     // console.log(this.requestId)
-    this.ctx.clearRect(0, 0, screenWidth, screenHeight);
+    this.ctx.clearRect(0, 0, screenWidth * ratio, screenHeight * ratio);
     this.drawHomeEle();
     this.drawButton();
     // console.log(DataStore.getInstance().userInfo);

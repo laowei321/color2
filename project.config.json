@@ -9,10 +9,10 @@
 		"nodeModules": true
 	},
 	"compileType": "game",
-	"libVersion": "2.4.1",
+	"libVersion": "2.6.2",
 	"appid": "wx82a187d6fc4f987e",
 	"projectname": "color2",
-  "miniprogramRoot": "miniprogram/",
+	"miniprogramRoot": "miniprogram/",
 	"cloudfunctionRoot": "cloudfunction/",
 	"condition": {
 		"search": {

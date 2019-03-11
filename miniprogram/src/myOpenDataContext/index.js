@@ -117,21 +117,21 @@ function initRanklist(list) {
           let firstPic = wx.createImage();
           firstPic.src = 'src/myOpenDataContext/first.png';
           firstPic.onload = () => {
-            ctx.drawImage(firstPic, 0, index * itemHeight, 100, 100);
+            ctx.drawImage(firstPic, 14, index * itemHeight+16, 72, 68);
           }
           break;
         case 1:
           let secondPic = wx.createImage();
           secondPic.src = 'src/myOpenDataContext/second.png';
           secondPic.onload = () => {
-            ctx.drawImage(secondPic, 0, index * itemHeight, 100, 100);
+            ctx.drawImage(secondPic, 14, index * itemHeight+16, 72, 68);
           }
           break;
         case 2:
           let thirdPic = wx.createImage();
           thirdPic.src = 'src/myOpenDataContext/third.png'; 
           thirdPic.onload = () => {
-            ctx.drawImage(thirdPic, 0, index * itemHeight, 100, 100);
+            ctx.drawImage(thirdPic, 14, index * itemHeight+16, 72, 68);
           }
           break;
       }
